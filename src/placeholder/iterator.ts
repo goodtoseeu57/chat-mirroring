@@ -42,6 +42,13 @@ class ChatOptionComposite {
   }) {
     this.id = option.id;
     this.question = option.question;
+    if (option.children) {
+      if (Array.isArray(option.children)) {
+        option.children.forEach((child) => this.addChild(child));
+      } else {
+        this.addChild(option.children);
+      }
+    }
   }
 
   getId(): number {
@@ -209,5 +216,7 @@ const chatOptions: ChatComponent = {
 // Create the root composite component from the JSON data
 const rootComponent = new ChatOptionComposite(chatOptions);
 
-// Print the chat options tree
-printChatComponent(rootComponent);
+console.log(
+  'Chat Component Tree:',
+  new ChatComponentIterator(rootComponent).next()
+);
