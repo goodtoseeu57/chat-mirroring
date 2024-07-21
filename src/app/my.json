@@ -1,0 +1,258 @@
+{
+  "question": "How can I assist you today?",
+  "id": 0,
+  "autoNext": true,
+  "children": [
+    {
+      "id": 1,
+      "question": "Technical Support",
+      "autoNext": true,
+      "children": [
+        {
+          "id": 2,
+          "question": "Software Issues",
+          "autoNext": true,
+          "children": [
+            {
+              "id": 3,
+              "question": "Cannot install software",
+              "autoNext": false,
+              "children": [
+                {
+                  "id": 26,
+                  "question": "Error messages during installation",
+                  "autoNext": false,
+                  "children": [
+                    {
+                      "id": 38,
+                      "question": "Error code 0x80070005",
+                      "autoNext": true,
+                      "children": []
+                    },
+                    {
+                      "id": 39,
+                      "question": "Error code 0x80070002",
+                      "autoNext": true,
+                      "children": []
+                    },
+                    {
+                      "id": 40,
+                      "question": "Error code 0x80070003",
+                      "autoNext": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 27,
+                  "question": "Insufficient disk space",
+                  "autoNext": true,
+                  "children": []
+                },
+                {
+                  "id": 28,
+                  "question": "Installation freezes",
+                  "autoNext": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "question": "Software crashes",
+              "autoNext": true,
+              "children": [
+                {
+                  "id": 29,
+                  "question": "Crashes on startup",
+                  "autoNext": true,
+                  "children": []
+                },
+                {
+                  "id": 30,
+                  "question": "Crashes during use",
+                  "autoNext": true,
+                  "children": []
+                },
+                {
+                  "id": 31,
+                  "question": "Specific error codes",
+                  "autoNext": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 11,
+              "question": "Slow performance",
+              "autoNext": true,
+              "children": [
+                {
+                  "id": 32,
+                  "question": "High CPU usage",
+                  "autoNext": true,
+                  "children": []
+                },
+                {
+                  "id": 33,
+                  "question": "High memory usage",
+                  "autoNext": true,
+                  "children": []
+                },
+                {
+                  "id": 34,
+                  "question": "Lagging or freezing",
+                  "autoNext": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "question": "Compatibility issues",
+              "autoNext": true,
+              "children": [
+                {
+                  "id": 35,
+                  "question": "OS compatibility",
+                  "autoNext": true,
+                  "children": []
+                },
+                {
+                  "id": 36,
+                  "question": "Hardware compatibility",
+                  "autoNext": true,
+                  "children": []
+                },
+                {
+                  "id": 37,
+                  "question": "Other software conflicts",
+                  "autoNext": true,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "question": "Hardware Issues",
+          "autoNext": true,
+          "children": [
+            {
+              "id": 6,
+              "question": "Computer won't start",
+              "autoNext": true,
+              "children": []
+            },
+            {
+              "id": 7,
+              "question": "Keyboard not working",
+              "autoNext": true,
+              "children": []
+            },
+            {
+              "id": 13,
+              "question": "Screen display issues",
+              "autoNext": true,
+              "children": []
+            },
+            {
+              "id": 14,
+              "question": "Battery problems",
+              "autoNext": true,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "question": "Network Issues",
+          "autoNext": true,
+          "children": [
+            {
+              "id": 16,
+              "question": "Internet connectivity",
+              "autoNext": true,
+              "children": []
+            },
+            {
+              "id": 17,
+              "question": "WiFi not working",
+              "autoNext": true,
+              "children": []
+            },
+            {
+              "id": 18,
+              "question": "VPN issues",
+              "autoNext": true,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Customer Service",
+      "autoNext": true,
+      "children": [
+        {
+          "id": 9,
+          "question": "Billing issue",
+          "autoNext": true,
+          "children": []
+        },
+        {
+          "id": 10,
+          "question": "Account management",
+          "autoNext": true,
+          "children": []
+        },
+        {
+          "id": 19,
+          "question": "Update account details",
+          "autoNext": true,
+          "children": []
+        },
+        {
+          "id": 20,
+          "question": "Cancel subscription",
+          "autoNext": true,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "question": "Sales",
+      "autoNext": true,
+      "children": [
+        {
+          "id": 22,
+          "question": "Product information",
+          "autoNext": true,
+          "children": []
+        },
+        {
+          "id": 23,
+          "question": "Pricing details",
+          "autoNext": true,
+          "children": []
+        },
+        {
+          "id": 24,
+          "question": "Place an order",
+          "autoNext": true,
+          "children": []
+        },
+        {
+          "id": 25,
+          "question": "Order status",
+          "autoNext": true,
+          "children": []
+        }
+      ]
+    }
+  ]
+}
