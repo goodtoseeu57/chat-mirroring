@@ -1,21 +1,40 @@
 <div>
-  <button class="chatbot-toggle-button" (click)="toggleChatbot()">
-    {{ closed ? "Open Chatbot" : minimized ? "Open Chatbot" : "Close Chatbot" }}
+  <button class="chatbot-toggle-button" (click)="toggleMinimize()">
+    {{ minimized ? "Open Chatbot" : "Minimize Chatbot" }} {{ unreadMessages }}
   </button>
   <div
     class="chatbot-container"
     #scrollContainer
-    [class.closed]="closed"
-    [class.minimized]="minimized && !closed"
+    [ngClass]="{
+      minimized: minimized,
+      disabled: closed
+    }"
   >
+    <div class="header">
+      <h1>Chatbot</h1>
+      <div class="controls">
+        <button (click)="toggleMinimize()">
+          {{ minimized ? "Maximize" : "Minimize" }}
+        </button>
+        <button (click)="closeChatbot()">Close</button>
+      </div>
+    </div>
     <h1>History</h1>
     <div *ngFor="let item of chatHistory">
       <h1>{{ item.question }}</h1>
     </div>
 
     <h1>Questions</h1>
-    <div *ngFor="let item of chatComponent.children">
-      <button (click)="sendBotResponse(item)">{{ item.question }}</button>
+    <div
+      *ngFor="let item of chatComponent.children"
+      [ngClass]="{ disabled: closed }"
+    >
+      <button (click)="sendBotResponse(item)" [disabled]="closed">
+        {{ item.question }}
+      </button>
+    </div>
+    <div *ngIf="closedDate && closed" class="closed-date">
+      Chat closed on: {{ closedDate | date : "short" }}
     </div>
   </div>
 </div>

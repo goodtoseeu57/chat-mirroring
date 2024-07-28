@@ -1,4 +1,12 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterContentChecked,
+  AfterContentInit,
+  AfterViewChecked,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ChatService } from './chat.service';
 import my from './my.json';
@@ -12,14 +20,17 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewChecked {
   title = 'chat-mirroring';
   chatComponent!: ChatComponent;
   chatHistory: ChatComponent[] = [];
   minimized = false;
   closed = false;
+  closedDate: Date | null = null;
+  unreadMessages = 0;
 
   @ViewChild('scrollContainer') private scrollContainer!: ElementRef;
+  @ViewChild('bottomContainer') private bottomContainer!: ElementRef;
 
   constructor(private chatService: ChatService) {}
 
@@ -34,38 +45,30 @@ export class AppComponent implements OnInit {
     }
   }
 
-  ngAfterViewChecked() {
-    this.scrollToBottom();
-  }
-
   toggleMinimize() {
     this.minimized = !this.minimized;
-  }
 
-  closeChatbot() {
-    this.closed = true;
-  }
-
-  openChatbot() {
-    this.closed = false;
-    this.minimized = false;
-  }
-
-  toggleChatbot() {
-    if (this.closed) {
-      this.openChatbot();
-    } else {
-      this.closeChatbot();
+    if (!this.minimized) {
+      this.unreadMessages = 0;
     }
   }
 
-  scrollToBottom(): void {
-    console.log('scrolling to bottom');
-    try {
-      this.scrollContainer.nativeElement.scrollTop =
-        this.scrollContainer.nativeElement.scrollHeight;
-    } catch (err) {
-      console.error('Scroll to bottom failed', err);
+  ngAfterViewChecked() {
+    this.scrollToBottomIfNeeded();
+  }
+
+  private scrollToBottomIfNeeded(): void {
+    this.scrollContainer.nativeElement.scrollTop =
+      this.scrollContainer.nativeElement.scrollHeight;
+  }
+
+  closeChatbot() {
+    if (!this.closed) {
+      if (window.confirm('Are you sure you want to close the chatbot?')) {
+        this.closed = true;
+        this.minimized = true;
+        this.closedDate = new Date();
+      }
     }
   }
 
@@ -74,12 +77,14 @@ export class AppComponent implements OnInit {
       const nextComponent = chatComponent;
       this.chatHistory.push(nextComponent);
       this.chatComponent = nextComponent;
-      console.log(this.chatComponent);
 
       if (nextComponent.autoNext) {
         setTimeout(() => {
           this.sendBotResponse(nextComponent.children[0]);
-        }, 2000);
+          if (this.minimized) {
+            this.unreadMessages++;
+          }
+        }, 3000);
       }
     }
   }
